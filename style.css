@@ -108,19 +108,8 @@ body {
   color: #fff;
   overflow: hidden;
   background:
-    linear-gradient(160deg, rgba(6, 26, 27, 0.82), rgba(12, 54, 53, 0.76) 58%, rgba(29, 35, 47, 0.72)),
+    linear-gradient(rgba(5, 20, 20, 0.42), rgba(5, 20, 20, 0.5)),
     url("https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b4/Muhammad_Ali_Mosque%2C_Citadel%2C_Cairo%2C_Egypt3.jpg/1920px-Muhammad_Ali_Mosque%2C_Citadel%2C_Cairo%2C_Egypt3.jpg") center 43% / cover;
-}
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  opacity: 0.04;
-  background-image: repeating-conic-gradient(
-    #fff 0 10deg,
-    transparent 10deg 20deg
-  );
-  background-size: 80px 80px;
 }
 .hero .container {
   position: relative;
