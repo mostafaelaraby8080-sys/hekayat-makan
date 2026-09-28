@@ -1,0 +1,458 @@
+/* ===== 1) المتغيرات ===== */
+:root {
+  --bg: #faf6ee;
+  --surface: #fff;
+  --text: #22201c;
+  --muted: #6b645a;
+  --gold: #b8863b;
+  --teal: #0f5e63;
+  --line: #e6dccb;
+  --shadow: 0 10px 30px rgba(60, 40, 10, 0.12);
+  --page-overlay: rgba(250, 246, 238, 0.92);
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #12110f;
+    --surface: #1c1a17;
+    --text: #f2ece0;
+    --muted: #a89f90;
+    --gold: #d9a955;
+    --teal: #3fb3b8;
+    --line: #332e26;
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    --page-overlay: rgba(18, 17, 15, 0.91);
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #12110f;
+  --surface: #1c1a17;
+  --text: #f2ece0;
+  --muted: #a89f90;
+  --gold: #d9a955;
+  --teal: #3fb3b8;
+  --line: #332e26;
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  --page-overlay: rgba(18, 17, 15, 0.91);
+}
+
+/* ===== 2) الأساسيات ===== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 130px;
+}
+body {
+  background-color: var(--bg);
+  background-image:
+    linear-gradient(var(--page-overlay), var(--page-overlay)),
+    url("https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b4/Muhammad_Ali_Mosque%2C_Citadel%2C_Cairo%2C_Egypt3.jpg/1920px-Muhammad_Ali_Mosque%2C_Citadel%2C_Cairo%2C_Egypt3.jpg");
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  color: var(--text);
+  font-family: "Cairo", Tahoma, sans-serif;
+  line-height: 1.8;
+}
+.container {
+  width: min(1120px, 92%);
+  margin-inline: auto;
+}
+
+/* ===== 3) الشريط العلوي ===== */
+.nav {
+  position: sticky;
+  top: env(safe-area-inset-top, 0px);
+  z-index: 10;
+  background: color-mix(in srgb, var(--bg) 90%, transparent);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+.nav .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 62px;
+}
+.logo {
+  font-family: "Aref Ruqaa", "Amiri", serif;
+  font-size: 1.5rem;
+  color: var(--gold);
+  text-decoration: none;
+}
+.theme-btn {
+  background: none;
+  border: 1px solid var(--line);
+  color: var(--text);
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+/* ===== 4) الواجهة ===== */
+.hero {
+  position: relative;
+  text-align: center;
+  padding: 80px 0 90px;
+  color: #fff;
+  overflow: hidden;
+  background:
+    linear-gradient(160deg, rgba(6, 26, 27, 0.82), rgba(12, 54, 53, 0.76) 58%, rgba(29, 35, 47, 0.72)),
+    url("https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b4/Muhammad_Ali_Mosque%2C_Citadel%2C_Cairo%2C_Egypt3.jpg/1920px-Muhammad_Ali_Mosque%2C_Citadel%2C_Cairo%2C_Egypt3.jpg") center 43% / cover;
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.04;
+  background-image: repeating-conic-gradient(
+    #fff 0 10deg,
+    transparent 10deg 20deg
+  );
+  background-size: 80px 80px;
+}
+.hero .container {
+  position: relative;
+}
+.hero small {
+  letter-spacing: 0.15em;
+  color: #f3d79a;
+  font-weight: 600;
+}
+.hero h1 {
+  font-family: "Aref Ruqaa", "Amiri", serif;
+  font-size: clamp(2.3rem, 7vw, 4.4rem);
+  line-height: 1.3;
+  margin: 12px 0;
+}
+.hero p {
+  max-width: 620px;
+  margin: 0 auto 26px;
+  opacity: 0.92;
+  font-size: 1.1rem;
+}
+.btn {
+  display: inline-block;
+  background: var(--gold);
+  color: #1b1408;
+  padding: 12px 30px;
+  border-radius: 40px;
+  font-weight: 800;
+  text-decoration: none;
+}
+.stats {
+  display: flex;
+  justify-content: center;
+  gap: 38px;
+  margin-top: 40px;
+  flex-wrap: wrap;
+}
+.stats b {
+  display: block;
+  font-size: 2rem;
+  color: #f3d79a;
+}
+
+/* ===== 5) الفلاتر والمدن ===== */
+.filters {
+  position: sticky;
+  top: calc(62px + env(safe-area-inset-top, 0px));
+  z-index: 9;
+  background: var(--bg);
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+.chip {
+  flex: none;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--text);
+  padding: 6px 16px;
+  border-radius: 30px;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+.chip.active,
+.chip:hover {
+  background: var(--teal);
+  color: #fff;
+  border-color: var(--teal);
+}
+section {
+  padding: 50px 0 20px;
+}
+.city {
+  margin-bottom: 50px;
+}
+.city h2 {
+  font-family: "Aref Ruqaa", "Amiri", serif;
+  font-size: 2rem;
+  color: var(--teal);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 6px;
+}
+.city h2 small {
+  font-family: "Cairo", sans-serif;
+  font-size: 0.8rem;
+  color: var(--gold);
+  border: 1px solid var(--gold);
+  border-radius: 20px;
+  padding: 0 12px;
+}
+.city .sub {
+  color: var(--muted);
+  margin-bottom: 20px;
+}
+
+/* ===== 6) البطاقات ===== */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  gap: 24px;
+}
+.card {
+  background: var(--surface);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--line);
+  transition:
+    transform 0.3s,
+    opacity 0.5s;
+  opacity: 0;
+  transform: translateY(24px);
+}
+.card.show {
+  opacity: 1;
+  transform: none;
+}
+.card:hover {
+  transform: translateY(-6px);
+}
+.card:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 4px;
+}
+.art {
+  height: 410px;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #0f5e63, #d4a45d);
+}
+.art svg,
+.art img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.art img {
+  transition: transform 0.5s ease;
+}
+.card:hover .art img {
+  transform: scale(1.045);
+}
+.open-hint {
+  position: absolute;
+  inset-inline-start: 10px;
+  bottom: 10px;
+  padding: 2px 9px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 20px;
+  background: rgba(20, 24, 22, 0.7);
+  color: #fff;
+  font-size: 0.7rem;
+  line-height: 1.7;
+  pointer-events: none;
+}
+.photo-credit {
+  position: absolute;
+  inset-inline-end: 10px;
+  bottom: 10px;
+  padding: 2px 9px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 20px;
+  background: rgba(20, 24, 22, 0.7);
+  color: #fff;
+  font-size: 0.7rem;
+  line-height: 1.7;
+  text-decoration: none;
+  backdrop-filter: blur(5px);
+}
+.photo-credit:hover {
+  background: rgba(20, 24, 22, 0.9);
+}
+.badge {
+  position: absolute;
+  top: 12px;
+  inset-inline-start: 12px;
+  background: rgba(0, 0, 0, 0.45);
+  color: #fff;
+  font-size: 0.78rem;
+  padding: 2px 12px;
+  border-radius: 20px;
+}
+.body {
+  padding: 18px 20px 22px;
+}
+.body h3 {
+  font-family: "Aref Ruqaa", "Amiri", serif;
+  font-size: 1.4rem;
+  color: var(--teal);
+}
+.meta {
+  color: var(--gold);
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+.body p {
+  color: var(--muted);
+  font-size: 0.93rem;
+}
+footer {
+  text-align: center;
+  padding: 30px 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+  border-top: 1px solid var(--line);
+}
+.detail-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 62px;
+}
+.back-link {
+  color: var(--teal);
+  font-weight: 700;
+  text-decoration: none;
+}
+.back-link:hover,
+.detail-figure figcaption a:hover {
+  text-decoration: underline;
+}
+.detail-page {
+  padding-block: 36px 64px;
+}
+.detail-meta {
+  color: var(--gold);
+  font-weight: 700;
+}
+.detail-meta span {
+  padding-inline: 6px;
+  color: var(--muted);
+}
+.detail-title {
+  margin-block: 4px 24px;
+  color: var(--teal);
+  font-family: "Aref Ruqaa", "Amiri", serif;
+  font-size: clamp(2.4rem, 6vw, 4rem);
+  line-height: 1.35;
+}
+.detail-figure {
+  margin: 0 auto;
+  max-width: 740px;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+.detail-image-wrap {
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 12px;
+  background: #171512;
+}
+.detail-image-wrap .detail-image {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 78vh;
+  object-fit: contain;
+}
+.detail-image-wrap svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.detail-figure figcaption {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 4px 0;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+.detail-figure figcaption a {
+  color: var(--teal);
+}
+.detail-story {
+  max-width: 740px;
+  margin: 32px auto;
+  padding: 28px clamp(20px, 5vw, 42px);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+.detail-story h2 {
+  margin-bottom: 12px;
+  color: var(--teal);
+  font-family: "Aref Ruqaa", "Amiri", serif;
+  font-size: 2rem;
+}
+.detail-story p {
+  color: var(--text);
+  font-size: 1.08rem;
+}
+.detail-story .detail-summary {
+  margin-top: 16px;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+.detail-back {
+  display: table;
+  margin-inline: auto;
+}
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+@media (max-width: 600px) {
+  body {
+    background-attachment: scroll;
+  }
+  .hero {
+    background-position: center, 58% center;
+  }
+  .art {
+    height: 380px;
+  }
+  .detail-page {
+    padding-top: 24px;
+  }
+  .detail-nav .logo {
+    font-size: 1.35rem;
+  }
+}

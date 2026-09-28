@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>حكاية مكان | معالم مصر التاريخية</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Cairo:wght@400;600;800&family=Amiri:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- ===== HTML ===== -->
+    <header class="nav">
+      <div class="container">
+        <div class="logo">حكاية مكان</div>
+        <button class="theme-btn" id="themeBtn" aria-label="تغيير الوضع">
+          ☾
+        </button>
+      </div>
+    </header>
+
+    <div class="hero">
+      <div class="container">
+        <small>حكايات من قلب التاريخ المصري</small>
+        <h1>ألف عام من العمارة الإسلامية<br />في أنحاء مصر</h1>
+        <p>
+          مساجد وقلاع وأسواق عتيقة تحكي تاريخ مصر. اختر مدينة وابدأ رحلتك بين
+          معالمها.
+        </p>
+        <a class="btn" href="#list">ابدأ الاستكشاف</a>
+        <div class="stats">
+          <div><b id="nLand">0</b>معلمًا</div>
+          <div><b id="nCity">0</b>مدن ومناطق</div>
+          <div><b>+1400</b>سنة من التاريخ</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container"><nav class="filters" id="filters"></nav></div>
+    <section id="list"><div class="container" id="cities"></div></section>
+    <footer>© 2026 حكاية مكان · حكايات من تراث مصر</footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
