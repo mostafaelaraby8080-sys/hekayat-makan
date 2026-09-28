@@ -4,6 +4,7 @@
   --surface: #fff8ed;
   --text: #22201c;
   --muted: #6b645a;
+  --city-note: #514633;
   --gold: #b8863b;
   --teal: #0f5e63;
   --line: #e6dccb;
@@ -19,6 +20,7 @@
     --surface: #1c1a17;
     --text: #f2ece0;
     --muted: #a89f90;
+    --city-note: #d2c4ab;
     --gold: #d9a955;
     --teal: #3fb3b8;
     --line: #332e26;
@@ -31,6 +33,7 @@
   --surface: #1c1a17;
   --text: #f2ece0;
   --muted: #a89f90;
+  --city-note: #d2c4ab;
   --gold: #d9a955;
   --teal: #3fb3b8;
   --line: #332e26;
@@ -198,13 +201,16 @@ section {
 .city h2 small {
   font-family: "Cairo", sans-serif;
   font-size: 0.8rem;
-  color: var(--gold);
-  border: 1px solid var(--gold);
+  color: var(--teal);
+  background: color-mix(in srgb, var(--surface) 72%, var(--teal) 28%);
+  border: 1px solid color-mix(in srgb, var(--teal) 65%, transparent);
   border-radius: 20px;
   padding: 0 12px;
+  font-weight: 700;
 }
 .city .sub {
-  color: var(--muted);
+  color: var(--city-note);
+  font-weight: 600;
   margin-bottom: 20px;
 }
 
