@@ -1,14 +1,14 @@
 /* ===== 1) المتغيرات ===== */
 :root {
-  --bg: #faf6ee;
-  --surface: #fff;
+  --bg: #f2e8d7;
+  --surface: #fff8ed;
   --text: #22201c;
   --muted: #6b645a;
   --gold: #b8863b;
   --teal: #0f5e63;
   --line: #e6dccb;
   --shadow: 0 10px 30px rgba(60, 40, 10, 0.12);
-  --page-overlay: rgba(250, 246, 238, 0.72);
+  --page-overlay: rgba(220, 199, 162, 0.66);
   box-sizing: border-box;
   padding-top: env(safe-area-inset-top, 0px);
   padding-bottom: env(safe-area-inset-bottom, 0px);
@@ -69,9 +69,8 @@ body {
   position: sticky;
   top: env(safe-area-inset-top, 0px);
   z-index: 10;
-  background: color-mix(in srgb, var(--bg) 90%, transparent);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--line);
+  background: transparent;
+  border-bottom: 1px solid transparent;
 }
 .nav .container {
   display: flex;
